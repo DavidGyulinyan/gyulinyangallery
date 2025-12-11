@@ -1,0 +1,93 @@
+import Link from "next/link";
+import { Instagram, Facebook, Twitter } from "lucide-react";
+
+const socialLinks = [
+  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "Facebook", href: "#", icon: Facebook },
+  { name: "Twitter", href: "#", icon: Twitter },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t bg-background">
+      <div className="container py-8 md:py-12">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">Gyulinyan Gallery</h3>
+            <p className="text-sm text-muted-foreground">
+              Contemporary art gallery showcasing emerging and established
+              artists.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold">Navigation</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold">Contact</h3>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>123 Art Street</p>
+              <p>New York, NY 10001</p>
+              <p>info@gyulinyangallery.com</p>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold">Follow Us</h3>
+            <div className="flex space-x-4">
+              {socialLinks.map((social) => (
+                <Link
+                  key={social.name}
+                  href={social.href}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <social.icon className="h-5 w-5" />
+                  <span className="sr-only">{social.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+          <p>
+            &copy; {new Date().getFullYear()} Gyulinyan Gallery. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
