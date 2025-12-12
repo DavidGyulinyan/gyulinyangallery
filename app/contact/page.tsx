@@ -52,7 +52,7 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <div className="container py-8">
+    <div className="container py-8 flex flex-col items-center justify-center">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>

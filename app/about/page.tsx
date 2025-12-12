@@ -18,10 +18,10 @@ export default async function AboutPage() {
   const exhibitions = await getExhibitions();
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 flex flex-col items-center">
       {/* Hero Section */}
       <div className="mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About Gyulinyan
@@ -40,7 +40,7 @@ export default async function AboutPage() {
               featured in prestigious galleries and private collections.
             </p>
           </div>
-          <div className="relative aspect-square lg:aspect-[4/5] rounded-lg overflow-hidden">
+          <div className="relative aspect-square lg:aspect-4/5 rounded-lg overflow-hidden">
             <Image
               src="/artist-portrait.jpg"
               alt="Gyulinyan"

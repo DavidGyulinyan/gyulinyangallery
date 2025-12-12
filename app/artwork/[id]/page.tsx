@@ -8,12 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/database.types";
-import { contactFormSchema } from "@/lib/schemas";
 import { ContactForm } from "@/components/contact-form";
 
 type Artwork = Database["public"]["Tables"]["artworks"]["Row"];
@@ -42,7 +38,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
   }
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 flex flex-col items-center">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Image */}
         <div className="relative aspect-square lg:aspect-auto lg:h-[600px] rounded-lg overflow-hidden">
@@ -50,6 +46,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
             src={artwork.url}
             alt={artwork.title}
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
             priority
           />
@@ -76,7 +73,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
               )}
               <p>
                 <span className="font-medium">SKU:</span>{" "}
-                {artwork.id.slice(0, 8).toUpperCase()}
+                {String(artwork.id).slice(0, 8).toUpperCase()}
               </p>
             </div>
           </div>

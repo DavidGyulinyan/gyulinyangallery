@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,13 +19,17 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block">
-              Gyulinyan Gallery
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Gyulinyan signature"
+              width={150}
+              height={50}
+              className="hidden object-center sm:inline-block"
+            />
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navigation.map((item) => (
@@ -53,7 +59,12 @@ export function Header() {
               className="flex items-center"
               onClick={() => setIsOpen(false)}
             >
-              <span className="font-bold">Gyulinyan Gallery</span>
+              <Image
+                src="/logo.png"
+                alt="Gyulinyan Gallery"
+                width={150}
+                height={40}
+              />
             </Link>
             <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
               <div className="flex flex-col space-y-3">
@@ -74,7 +85,12 @@ export function Header() {
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <Link href="/" className="flex items-center space-x-2 md:hidden">
-              <span className="font-bold">Gyulinyan Gallery</span>
+              <Image
+                src="/logo.png"
+                alt="Gyulinyan Gallery"
+                width={150}
+                height={40}
+              />
             </Link>
           </div>
         </div>

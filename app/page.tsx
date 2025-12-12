@@ -30,12 +30,13 @@ async function getFeaturedArtworks() {
 
 function Hero() {
   return (
-    <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-artwork.jpg"
           alt="Featured artwork"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -69,11 +70,9 @@ function Hero() {
 
 function ArtistBio() {
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          About Gyulinyan
-        </h2>
+    <section className="py-16">
+      <div className="container text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Gyulinyan</h2>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">
           Gyulinyan is a contemporary artist known for her innovative approach
           to mixed media and abstract expressionism. With over 15 years of
@@ -94,8 +93,8 @@ async function FeaturedCarousel() {
 
   if (artworks.length === 0) {
     return (
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16">
+        <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Featured Artwork
           </h2>
@@ -108,8 +107,8 @@ async function FeaturedCarousel() {
   }
 
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16">
+      <div className="container">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           Featured Artwork
         </h2>
@@ -127,6 +126,7 @@ async function FeaturedCarousel() {
                         src={artwork.url}
                         alt={artwork.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover"
                       />
                     </div>
@@ -161,7 +161,7 @@ async function FeaturedCarousel() {
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Hero />
       <ArtistBio />
       <Suspense

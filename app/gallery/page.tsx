@@ -69,6 +69,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
                 src={artwork.url}
                 alt={artwork.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
@@ -86,7 +87,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
                 height={800}
                 className="w-full h-auto"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+              <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6">
                 <h3 className="text-white text-2xl font-bold mb-2">
                   {artwork.title}
                 </h3>
@@ -159,12 +160,12 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const categories = await getCategories();
 
   return (
-    <div className="container py-8">
-      <div className="mb-8">
+    <div className="container py-8 flex flex-col items-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-bold mb-6">Gallery</h1>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
+        <div className="flex flex-col md:flex-row gap-4 mb-6 justify-center">
           <form className="flex-1 flex gap-2">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
