@@ -1,16 +1,7 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -21,6 +12,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/database.types";
+import { GalleryFilters } from "@/components/gallery-filters";
 
 type Artwork = Database["public"]["Tables"]["artworks"]["Row"];
 
@@ -55,7 +47,7 @@ async function getCategories() {
 }
 
 interface GalleryPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 function ArtworkCard({ artwork }: { artwork: Artwork }) {
@@ -151,12 +143,10 @@ async function GalleryGrid({
 }
 
 export default async function GalleryPage({ searchParams }: GalleryPageProps) {
-  const search =
-    typeof searchParams.search === "string" ? searchParams.search : undefined;
+  const params = await searchParams;
+  const search = typeof params.search === "string" ? params.search : undefined;
   const category =
-    typeof searchParams.category === "string"
-      ? searchParams.category
-      : undefined;
+    typeof params.category === "string" ? params.category : undefined;
   const categories = await getCategories();
 
   return (
@@ -164,37 +154,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-bold mb-6">Gallery</h1>
 
-        {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-6 justify-center">
-          <form className="flex-1 flex gap-2">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                name="search"
-                placeholder="Search artworks..."
-                defaultValue={search}
-                className="pl-10"
-              />
-            </div>
-            <Select name="category" defaultValue={category || "all"}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
-                {categories.map((cat) => (
-                  <SelectItem key={cat} value={cat}>
-                    {cat}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Button type="submit">
-              <Filter className="h-4 w-4 mr-2" />
-              Filter
-            </Button>
-          </form>
-        </div>
+        <GalleryFilters categories={categories} />
       </div>
 
       <Suspense
