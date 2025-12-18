@@ -39,9 +39,9 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
 
   return (
     <div className="container py-8 flex flex-col items-center">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Image */}
-        <div className="relative aspect-square lg:aspect-auto lg:h-[600px] rounded-lg overflow-hidden">
+        <div className="relative aspect-square lg:aspect-auto lg:h-[600px] lg:col-span-2 rounded-lg overflow-hidden">
           <Image
             src={artwork.url}
             alt={artwork.title}

@@ -1,9 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
-
-type Message = Database["public"]["Tables"]["messages"]["Row"];
+import { MessageCard } from "@/components/admin/message-card";
 
 async function getMessages() {
   const supabase = await createClient();
@@ -13,27 +10,6 @@ async function getMessages() {
     .order("created_at", { ascending: false });
 
   return data || [];
-}
-
-function MessageCard({ message }: { message: Message }) {
-  return (
-    <Card>
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <div>
-            <CardTitle className="text-lg">{message.name}</CardTitle>
-            <p className="text-sm text-muted-foreground">{message.email}</p>
-          </div>
-          <Badge variant="secondary">
-            {new Date(message.created_at).toLocaleDateString()}
-          </Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm leading-relaxed">{message.message}</p>
-      </CardContent>
-    </Card>
-  );
 }
 
 export default async function MessagesAdminPage() {

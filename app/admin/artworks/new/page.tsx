@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { artworkSchema, type Artwork } from "@/lib/schemas";
+import { createArtworkSchema, type Artwork } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/client";
 
 export default function NewArtworkPage() {
@@ -28,8 +28,8 @@ export default function NewArtworkPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Artwork>({
-    resolver: zodResolver(artworkSchema),
+  } = useForm<Omit<Artwork, "url">>({
+    resolver: zodResolver(createArtworkSchema),
   });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,7 @@ export default function NewArtworkPage() {
     }
   };
 
-  const onSubmit = async (data: Artwork) => {
+  const onSubmit = async (data: Omit<Artwork, "url">) => {
     if (!imageFile) {
       alert("Please select an image");
       return;
@@ -165,6 +165,7 @@ export default function NewArtworkPage() {
                   id="price"
                   type="number"
                   step="0.01"
+                  max="99999999.99"
                   {...register("price", { valueAsNumber: true })}
                   placeholder="1000.00"
                 />

@@ -3,12 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { createClient } from "@/lib/supabase/client";
 
-const navigation = [
+const baseNavigation = [
   { name: "Home", href: "/" },
   { name: "Gallery", href: "/gallery" },
   { name: "About", href: "/about" },
@@ -17,6 +18,25 @@ const navigation = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const supabase = createClient();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user && user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+        setIsAdmin(true);
+      }
+    };
+    checkAdmin();
+  }, []);
+
+  const navigation = [
+    ...baseNavigation,
+    ...(isAdmin ? [{ name: "Dashboard", href: "/admin" }] : []),
+  ];
 
   return (
     <header className="h-22 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">

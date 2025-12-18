@@ -12,7 +12,7 @@ export default async function AdminLayout({
   } = await supabase.auth.getUser();
 
   if (!user || user.email !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
-    redirect("/admin/login");
+    redirect("/admin-login");
   }
 
   return (

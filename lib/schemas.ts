@@ -10,6 +10,15 @@ export const artworkSchema = z.object({
   url: z.string().url('Invalid URL'),
 })
 
+export const createArtworkSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  category: z.string().min(1, 'Category is required'),
+  description: z.string().optional(),
+  dimensions: z.string().optional(),
+  year: z.number().int().min(1900).max(new Date().getFullYear() + 1).optional(),
+  price: z.number().min(0).max(99999999.99).optional(),
+})
+
 export const exhibitionSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   location: z.string().min(1, 'Location is required'),
