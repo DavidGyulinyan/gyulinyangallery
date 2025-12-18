@@ -1,19 +1,71 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/client";
 import { MessageCard } from "@/components/admin/message-card";
 
-async function getMessages() {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("messages")
-    .select("*")
-    .order("created_at", { ascending: false });
+type Message = {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
+};
 
-  return data || [];
-}
+export default function MessagesAdminPage() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function MessagesAdminPage() {
-  const messages = await getMessages();
+  useEffect(() => {
+    const supabase = createClient();
+
+    // Initial fetch
+    const fetchMessages = async () => {
+      const { data } = await supabase
+        .from("messages")
+        .select("*")
+        .order("created_at", { ascending: false });
+      setMessages(data || []);
+      setLoading(false);
+    };
+
+    fetchMessages();
+
+    // Subscribe to changes
+    const channel = supabase
+      .channel("messages")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload) => {
+          setMessages((prev) => [payload.new as Message, ...prev]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold">Contact Messages</h1>
+          <p className="text-muted-foreground">
+            View messages from your contact form.
+          </p>
+        </div>
+        <Card>
+          <CardContent className="p-8 text-center">
+            <p className="text-muted-foreground">Loading messages...</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

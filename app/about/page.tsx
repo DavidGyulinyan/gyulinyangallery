@@ -21,33 +21,22 @@ export default async function AboutPage() {
     <div className="container py-8 flex flex-col items-center">
       {/* Hero Section */}
       <div className="mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About Gyulinyan
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Gyulinyan is a contemporary artist whose work explores the
-              intersection of human emotion and natural forms. With over 15
-              years of experience in the art world, she has developed a unique
-              style that combines traditional techniques with modern
-              sensibilities.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Her journey began in the vibrant art scenes of Eastern Europe,
-              where she first experimented with mixed media and abstract
-              expressionism. Today, her work is recognized internationally and
-              featured in prestigious galleries and private collections.
-            </p>
-          </div>
-          <div className="relative aspect-square lg:aspect-4/5 rounded-lg overflow-hidden">
-            <Image
-              src="/artist-portrait.jpg"
-              alt="Gyulinyan"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            About Gyulinyan
+          </h1>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            Gyulinyan is a contemporary artist whose work explores the
+            intersection of human emotion and natural forms. With over 15 years
+            of experience in the art world, she has developed a unique style
+            that combines traditional techniques with modern sensibilities.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Her journey began in the vibrant art scenes of Eastern Europe, where
+            she first experimented with mixed media and abstract expressionism.
+            Today, her work is recognized internationally and featured in
+            prestigious galleries and private collections.
+          </p>
         </div>
       </div>
 
