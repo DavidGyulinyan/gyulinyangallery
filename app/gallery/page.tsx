@@ -56,7 +56,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
       <CardContent className="p-0">
         <Dialog>
           <DialogTrigger asChild>
-            <div className="relative aspect-square cursor-pointer overflow-hidden">
+            <div className="relative aspect-4/5 cursor-pointer overflow-hidden">
               <Image
                 src={artwork.url}
                 alt={artwork.title}
