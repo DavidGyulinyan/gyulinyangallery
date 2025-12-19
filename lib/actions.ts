@@ -20,3 +20,21 @@ export async function deleteMessage(id: string) {
 
   revalidatePath('/admin/messages');
 }
+
+export async function deleteExhibition(id: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("exhibitions").delete().eq("id", id);
+
+  if (error) throw error;
+
+  revalidatePath('/admin/exhibitions');
+}
+
+export async function updateArtwork(id: string, data: any) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("artworks").update(data).eq("id", id);
+
+  if (error) throw error;
+
+  revalidatePath('/admin/artworks');
+}

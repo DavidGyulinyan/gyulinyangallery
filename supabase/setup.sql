@@ -42,13 +42,13 @@ CREATE POLICY "Public read access for artworks" ON artworks
 
 -- Allow authenticated admin to insert/update/delete
 CREATE POLICY "Admin insert artworks" ON artworks
-  FOR INSERT WITH CHECK (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR INSERT WITH CHECK (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin update artworks" ON artworks
-  FOR UPDATE USING (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR UPDATE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin delete artworks" ON artworks
-  FOR DELETE USING (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR DELETE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 -- RLS Policies for exhibitions
 -- Allow public read access
@@ -57,13 +57,13 @@ CREATE POLICY "Public read access for exhibitions" ON exhibitions
 
 -- Allow authenticated admin to manage
 CREATE POLICY "Admin insert exhibitions" ON exhibitions
-  FOR INSERT WITH CHECK (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR INSERT WITH CHECK (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin update exhibitions" ON exhibitions
-  FOR UPDATE USING (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR UPDATE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin delete exhibitions" ON exhibitions
-  FOR DELETE USING (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR DELETE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 -- RLS Policies for messages
 -- Allow public insert
@@ -72,7 +72,7 @@ CREATE POLICY "Public insert messages" ON messages
 
 -- Allow authenticated admin to read
 CREATE POLICY "Admin read messages" ON messages
-  FOR SELECT USING (auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR SELECT USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 -- Create storage bucket for images
 INSERT INTO storage.buckets (id, name, public)
@@ -83,10 +83,10 @@ CREATE POLICY "Public read access for artworks bucket" ON storage.objects
   FOR SELECT USING (bucket_id = 'artworks');
 
 CREATE POLICY "Admin upload to artworks bucket" ON storage.objects
-  FOR INSERT WITH CHECK (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR INSERT WITH CHECK (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin update artworks bucket" ON storage.objects
-  FOR UPDATE USING (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR UPDATE USING (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 CREATE POLICY "Admin delete from artworks bucket" ON storage.objects
-  FOR DELETE USING (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'admin@example.com');
+  FOR DELETE USING (bucket_id = 'artworks' AND auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');

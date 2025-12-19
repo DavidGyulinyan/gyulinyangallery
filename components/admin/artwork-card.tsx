@@ -14,8 +14,8 @@ export function ArtworkCard({ artwork }: { artwork: Artwork }) {
   return (
     <Card>
       <CardContent className="p-4">
-        <div className="flex gap-4">
-          <div className="relative w-24 h-24 shrink-0">
+        <div className="flex flex-col lg:flex-row gap-4 items-center lg:items-start">
+          <div className="relative w-80 h-80 lg:w-100 lg:h-100 shrink-0">
             <Image
               src={artwork.url}
               alt={artwork.title}
@@ -23,15 +23,18 @@ export function ArtworkCard({ artwork }: { artwork: Artwork }) {
               className="object-cover rounded"
             />
           </div>
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 text-center lg:text-left">
             <h3 className="font-semibold truncate">{artwork.title}</h3>
             <p className="text-sm text-muted-foreground">{artwork.category}</p>
             {artwork.year && (
               <p className="text-sm text-muted-foreground">{artwork.year}</p>
             )}
             {artwork.price && <p className="font-medium">${artwork.price}</p>}
+            {artwork.description && (
+              <p className="text-sm mt-2 line-clamp-2">{artwork.description}</p>
+            )}
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center lg:justify-start">
             <Button asChild variant="outline" size="sm">
               <Link href={`/admin/artworks/${artwork.id}/edit`}>
                 <Edit className="h-4 w-4" />
