@@ -10,6 +10,7 @@ type Message = {
   name: string;
   email: string;
   message: string;
+  read: boolean;
   created_at: string;
 };
 
@@ -22,7 +23,7 @@ export default function MessagesAdminPage() {
 
     // Initial fetch
     const fetchMessages = async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("messages")
         .select("*")
         .order("created_at", { ascending: false });
@@ -40,6 +41,26 @@ export default function MessagesAdminPage() {
         { event: "INSERT", schema: "public", table: "messages" },
         (payload) => {
           setMessages((prev) => [payload.new as Message, ...prev]);
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "messages" },
+        (payload) => {
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === payload.new.id ? (payload.new as Message) : msg
+            )
+          );
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "messages" },
+        (payload) => {
+          setMessages((prev) =>
+            prev.filter((msg) => msg.id !== payload.old.id)
+          );
         }
       )
       .subscribe();
@@ -85,7 +106,15 @@ export default function MessagesAdminPage() {
       ) : (
         <div className="grid gap-4">
           {messages.map((message) => (
-            <MessageCard key={message.id} message={message} />
+            <MessageCard
+              key={message.id}
+              message={message}
+              onMarkRead={(id) =>
+                setMessages((prev) =>
+                  prev.map((m) => (m.id === id ? { ...m, read: true } : m))
+                )
+              }
+            />
           ))}
         </div>
       )}

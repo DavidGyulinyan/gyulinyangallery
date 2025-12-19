@@ -11,20 +11,8 @@ import { ContactForm } from "@/components/contact-form";
 const socialLinks = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/gyulinyangallery/?utm_source=qr&igsh=eWp0Z3luN3Vrbmwz",
     icon: Instagram,
-    handle: "@gyulinyangallery",
-  },
-  {
-    name: "Facebook",
-    href: "#",
-    icon: Facebook,
-    handle: "Gyulinyan Gallery",
-  },
-  {
-    name: "Twitter",
-    href: "#",
-    icon: Twitter,
     handle: "@gyulinyangallery",
   },
 ];
@@ -33,21 +21,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@gyulinyangallery.com",
-    href: "mailto:info@gyulinyangallery.com",
+    value: "gyulinyangallery@gmail.com",
+    href: "mailto:gyulinyangallery@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "123 Art Street, New York, NY 10001",
-    href: "#",
-  },
+    value: "+374 93176809",
+    href: "tel:+37493176809",
+  }
 ];
 
 export default function ContactPage() {

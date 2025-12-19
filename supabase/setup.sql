@@ -27,6 +27,7 @@ CREATE TABLE messages (
   name TEXT NOT NULL,
   email TEXT NOT NULL,
   message TEXT NOT NULL,
+  read BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -70,9 +71,15 @@ CREATE POLICY "Admin delete exhibitions" ON exhibitions
 CREATE POLICY "Public insert messages" ON messages
   FOR INSERT WITH CHECK (true);
 
--- Allow authenticated admin to read
+-- Allow authenticated admin to read and update
 CREATE POLICY "Admin read messages" ON messages
   FOR SELECT USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
+
+CREATE POLICY "Admin update messages" ON messages
+  FOR UPDATE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
+
+CREATE POLICY "Admin delete messages" ON messages
+  FOR DELETE USING (auth.jwt() ->> 'email' = 'davidgyulinyan@gmail.com');
 
 -- Create storage bucket for images
 INSERT INTO storage.buckets (id, name, public)

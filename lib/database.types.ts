@@ -78,6 +78,7 @@ export interface Database {
           name: string
           email: string
           message: string
+          read: boolean
           created_at: string
         }
         Insert: {
@@ -85,6 +86,7 @@ export interface Database {
           name: string
           email: string
           message: string
+          read?: boolean
           created_at?: string
         }
         Update: {
@@ -92,6 +94,7 @@ export interface Database {
           name?: string
           email?: string
           message?: string
+          read?: boolean
           created_at?: string
         }
         Relationships: []

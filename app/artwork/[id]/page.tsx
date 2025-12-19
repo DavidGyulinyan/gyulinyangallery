@@ -41,7 +41,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
     <div className="container py-8 flex flex-col items-center">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Image */}
-        <div className="relative aspect-square lg:aspect-auto lg:h-[600px] lg:col-span-2 rounded-lg overflow-hidden">
+        <div className="relative aspect-square lg:aspect-auto lg:h-150 lg:col-span-2 rounded-lg overflow-hidden">
           <Image
             src={artwork.url}
             alt={artwork.title}
@@ -102,7 +102,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
                     Purchase Inquiry
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[500px]">
+                <DialogContent className="sm:max-w-125">
                   <DialogHeader>
                     <DialogTitle>Inquire About "{artwork.title}"</DialogTitle>
                   </DialogHeader>
@@ -117,7 +117,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
                   General Inquiry
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[500px]">
+              <DialogContent className="sm:max-w-125">
                 <DialogHeader>
                   <DialogTitle>Contact Gallery</DialogTitle>
                 </DialogHeader>

@@ -3,13 +3,26 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trash2 } from "lucide-react";
+import { Trash2, Check } from "lucide-react";
 import { deleteMessage } from "@/lib/actions";
+import { createClient } from "@/lib/supabase/client";
 import type { Database } from "@/lib/database.types";
 
 type Message = Database["public"]["Tables"]["messages"]["Row"];
 
-export function MessageCard({ message }: { message: Message }) {
+async function markAsRead(id: string, onMarkRead?: (id: string) => void) {
+  const supabase = createClient();
+  await supabase.from("messages").update({ read: true }).eq("id", id);
+  onMarkRead?.(id);
+}
+
+export function MessageCard({
+  message,
+  onMarkRead,
+}: {
+  message: Message;
+  onMarkRead?: (id: string) => void;
+}) {
   return (
     <Card>
       <CardHeader>
@@ -22,6 +35,16 @@ export function MessageCard({ message }: { message: Message }) {
             <Badge variant="secondary">
               {new Date(message.created_at).toLocaleDateString()}
             </Badge>
+            {!message.read && (
+              <Button
+                onClick={() => markAsRead(message.id, onMarkRead)}
+                variant="outline"
+                size="sm"
+                className="text-green-600 hover:text-green-700"
+              >
+                <Check className="h-4 w-4" />
+              </Button>
+            )}
             <form action={deleteMessage.bind(null, message.id)}>
               <Button
                 type="submit"
