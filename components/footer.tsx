@@ -65,9 +65,9 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Contact</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>123 Art Street</p>
-              <p>New York, NY 10001</p>
-              <p>info@gyulinyangallery.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>Yerevan, Armenia</p>
+              <p>gyulinyangallery@gmail.com</p>
+              <p>+374 93176809</p>
             </div>
           </div>
           <div className="space-y-3">
