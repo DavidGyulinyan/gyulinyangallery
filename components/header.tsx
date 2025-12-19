@@ -21,16 +21,28 @@ export function Header() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const checkAdmin = async () => {
-      const supabase = createClient();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    const supabase = createClient();
+    const checkAdmin = (user: any) => {
       if (user && user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
         setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
       }
     };
-    checkAdmin();
+
+    // Check initial state
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      checkAdmin(user);
+    });
+
+    // Listen for auth state changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      checkAdmin(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const navigation = [
