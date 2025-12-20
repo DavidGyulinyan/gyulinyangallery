@@ -11,6 +11,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/database.types";
 import { ContactForm } from "@/components/contact-form";
+import { ZoomableImage } from "@/components/ui/zoomable-image";
 
 type Artwork = Database["public"]["Tables"]["artworks"]["Row"];
 
@@ -42,14 +43,36 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Image */}
         <div className="relative aspect-square lg:aspect-auto lg:h-150 lg:col-span-2 rounded-lg overflow-hidden">
-          <Image
-            src={artwork.url}
-            alt={artwork.title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-            priority
-          />
+          <Dialog>
+            <DialogTrigger asChild>
+              <div className="cursor-pointer">
+                <Image
+                  src={artwork.url}
+                  alt={artwork.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  priority
+                />
+                <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <span className="text-white opacity-0 hover:opacity-100 transition-opacity text-sm font-medium">
+                    Click to zoom
+                  </span>
+                </div>
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-7xl max-h-[95vh] p-0">
+              <DialogHeader className="sr-only">
+                <DialogTitle>{artwork.title}</DialogTitle>
+              </DialogHeader>
+              <ZoomableImage
+                src={artwork.url}
+                alt={artwork.title}
+                width={1200}
+                height={1200}
+              />
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Details */}

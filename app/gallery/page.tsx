@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/database.types";
 import { GalleryFilters } from "@/components/gallery-filters";
+import { ZoomableImage } from "@/components/ui/zoomable-image";
 
 type Artwork = Database["public"]["Tables"]["artworks"]["Row"];
 
@@ -67,12 +68,12 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
             </div>
           </DialogTrigger>
-          <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+          <DialogContent className="max-w-7xl max-h-[95vh] p-0">
             <DialogHeader className="sr-only">
               <DialogTitle>{artwork.title}</DialogTitle>
             </DialogHeader>
             <div className="relative">
-              <Image
+              <ZoomableImage
                 src={artwork.url}
                 alt={artwork.title}
                 width={800}
