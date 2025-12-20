@@ -20,6 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.getElementById('chatgpt_translate_widget_root')?.remove();`,
+          }}
+        />
         <Header />
         <main className="flex flex-1 justify-center flex-col items-center">
           {children}
