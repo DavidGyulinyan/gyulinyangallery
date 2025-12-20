@@ -180,7 +180,7 @@ export default function EditArtworkPage() {
                 <Input
                   id="dimensions"
                   {...register("dimensions")}
-                  placeholder="24 x 30 inches"
+                  placeholder="24 x 30 sm"
                 />
                 {errors.dimensions && (
                   <p className="text-sm text-red-500">
