@@ -173,6 +173,20 @@ export default function NewArtworkPage() {
                   <p className="text-sm text-red-500">{errors.price.message}</p>
                 )}
               </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="materials">Materials</Label>
+                <Input
+                  id="materials"
+                  {...register("materials")}
+                  placeholder="e.g., Canvas, Oil"
+                />
+                {errors.materials && (
+                  <p className="text-sm text-red-500">
+                    {errors.materials.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="space-y-2">

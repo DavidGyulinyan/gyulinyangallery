@@ -23,10 +23,10 @@ export default async function AboutPage() {
       <div className="mb-16">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            About Gyulinyan
+            About
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Gyulinyan is a contemporary artist whose work explores the
+            Gevorg Gyulinyan is a contemporary artist whose work explores the
             intersection of human emotion and natural forms. With over 15 years
             of experience in the art world, she has developed a unique style
             that combines traditional techniques with modern sensibilities.

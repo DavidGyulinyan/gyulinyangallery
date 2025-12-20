@@ -18,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Header />
-        <main className="flex flex-1 justify-center flex-col items-center">{children}</main>
+        <main className="flex flex-1 justify-center flex-col items-center">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

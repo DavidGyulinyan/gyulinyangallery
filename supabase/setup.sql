@@ -8,6 +8,7 @@ CREATE TABLE artworks (
   year INTEGER,
   price DECIMAL(10,2),
   url TEXT NOT NULL,
+  materials TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

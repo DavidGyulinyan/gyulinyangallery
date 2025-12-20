@@ -27,11 +27,23 @@ export function ArtworkCard({ artwork }: { artwork: Artwork }) {
             <h3 className="font-semibold truncate">{artwork.title}</h3>
             <p className="text-sm text-muted-foreground">{artwork.category}</p>
             {artwork.year && (
-              <p className="text-sm text-muted-foreground">{artwork.year}</p>
+              <p className="text-sm text-muted-foreground">
+                Year: {artwork.year}
+              </p>
+            )}
+            {artwork.dimensions && (
+              <p className="text-sm text-muted-foreground">
+                Dimensions: {artwork.dimensions}
+              </p>
+            )}
+            {artwork.materials && (
+              <p className="text-sm text-muted-foreground">
+                Materials: {artwork.materials}
+              </p>
             )}
             {artwork.price && <p className="font-medium">${artwork.price}</p>}
             {artwork.description && (
-              <p className="text-sm mt-2 line-clamp-2">{artwork.description}</p>
+              <p className="text-sm mt-2">{artwork.description}</p>
             )}
           </div>
           <div className="flex gap-2 justify-center lg:justify-start">

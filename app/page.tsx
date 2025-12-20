@@ -72,9 +72,9 @@ function ArtistBio() {
   return (
     <section className="py-16">
       <div className="container text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Gyulinyan</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Gevorg Gyulinyan</h2>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-          Gyulinyan is a contemporary artist known for her innovative approach
+          Gevorg Gyulinyan is a contemporary artist known for her innovative approach
           to mixed media and abstract expressionism. With over 15 years of
           experience, her work explores themes of identity, nature, and human
           connection through vibrant colors and dynamic compositions. Her pieces

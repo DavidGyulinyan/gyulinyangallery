@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -23,11 +23,7 @@ export function Header() {
   useEffect(() => {
     const supabase = createClient();
     const checkAdmin = (user: any) => {
-      if (user && user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
-        setIsAdmin(true);
-      } else {
-        setIsAdmin(false);
-      }
+      setIsAdmin(!!user);
     };
 
     // Check initial state
@@ -45,10 +41,13 @@ export function Header() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const navigation = [
-    ...baseNavigation,
-    ...(isAdmin ? [{ name: "Dashboard", href: "/admin" }] : []),
-  ];
+  const navigation = useMemo(
+    () => [
+      ...baseNavigation,
+      ...(isAdmin ? [{ name: "Dashboard", href: "/admin" }] : []),
+    ],
+    [isAdmin]
+  );
 
   return (
     <header className="h-22 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -63,7 +62,10 @@ export function Header() {
               className="hidden object-center sm:inline-block"
             />
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav
+            key={navigation.length}
+            className="flex items-center space-x-6 text-sm font-medium"
+          >
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -99,7 +101,7 @@ export function Header() {
               />
             </Link>
             <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-              <div className="flex flex-col space-y-3">
+              <div key={navigation.length} className="flex flex-col space-y-3">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}

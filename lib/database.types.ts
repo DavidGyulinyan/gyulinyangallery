@@ -19,6 +19,7 @@ export interface Database {
           year: number | null
           price: number | null
           url: string
+          materials: string | null
           created_at: string
         }
         Insert: {
@@ -30,6 +31,7 @@ export interface Database {
           year?: number | null
           price?: number | null
           url: string
+          materials?: string | null
           created_at?: string
         }
         Update: {
@@ -41,6 +43,7 @@ export interface Database {
           year?: number | null
           price?: number | null
           url?: string
+          materials?: string | null
           created_at?: string
         }
         Relationships: []

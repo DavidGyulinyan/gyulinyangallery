@@ -59,6 +59,7 @@ export default function EditArtworkPage() {
       setValue("dimensions", data.dimensions || "");
       setValue("price", data.price || undefined);
       setValue("description", data.description || "");
+      setValue("materials", data.materials || "");
 
       setImagePreview(data.url);
       setLoading(false);
@@ -200,6 +201,20 @@ export default function EditArtworkPage() {
                 />
                 {errors.price && (
                   <p className="text-sm text-red-500">{errors.price.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="materials">Materials</Label>
+                <Input
+                  id="materials"
+                  {...register("materials")}
+                  placeholder="e.g., Canvas, Oil"
+                />
+                {errors.materials && (
+                  <p className="text-sm text-red-500">
+                    {errors.materials.message}
+                  </p>
                 )}
               </div>
             </div>

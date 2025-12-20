@@ -4,8 +4,8 @@ import { Instagram, Facebook, Twitter } from "lucide-react";
 
 const socialLinks = [
   { name: "Instagram", href: "#", icon: Instagram },
-  { name: "Facebook", href: "#", icon: Facebook },
-  { name: "Twitter", href: "#", icon: Twitter },
+  // { name: "Facebook", href: "#", icon: Facebook },
+  // { name: "Twitter", href: "#", icon: Twitter },
 ];
 
 export function Footer() {
@@ -64,7 +64,6 @@ export function Footer() {
           <div className="space-y-3">
             <h3 className="text-sm font-semibold">Contact</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>123 Art Street</p>
               <p>Yerevan, Armenia</p>
               <p>gyulinyangallery@gmail.com</p>
               <p>+374 93176809</p>
