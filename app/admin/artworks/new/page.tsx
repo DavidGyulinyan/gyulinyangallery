@@ -133,6 +133,18 @@ export default function NewArtworkPage() {
               </div>
 
               <div className="space-y-2">
+                <Label htmlFor="sku">SKU *</Label>
+                <Input
+                  id="sku"
+                  {...register("sku")}
+                  placeholder="Unique SKU for the artwork"
+                />
+                {errors.sku && (
+                  <p className="text-sm text-red-500">{errors.sku.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="year">Year</Label>
                 <Input
                   id="year"

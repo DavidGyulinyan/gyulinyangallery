@@ -26,6 +26,7 @@ export function ArtworkCard({ artwork }: { artwork: Artwork }) {
           <div className="flex-1 min-w-0 text-center lg:text-left">
             <h3 className="font-semibold truncate">{artwork.title}</h3>
             <p className="text-sm text-muted-foreground">{artwork.category}</p>
+            <p className="text-sm text-muted-foreground">SKU: {artwork.sku}</p>
             {artwork.year && (
               <p className="text-sm text-muted-foreground">
                 Year: {artwork.year}

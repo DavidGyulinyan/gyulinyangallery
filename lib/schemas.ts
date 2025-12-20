@@ -9,6 +9,7 @@ export const artworkSchema = z.object({
   price: z.number().min(0).optional(),
   url: z.string().url('Invalid URL'),
   materials: z.string().optional(),
+  sku: z.string().min(1, 'SKU is required'),
 })
 
 export const createArtworkSchema = z.object({
@@ -19,6 +20,7 @@ export const createArtworkSchema = z.object({
   year: z.number().int().min(1900).max(new Date().getFullYear() + 1).optional(),
   price: z.number().min(0).max(99999999.99).optional(),
   materials: z.string().optional(),
+  sku: z.string().min(1, 'SKU is required'),
 })
 
 export const exhibitionSchema = z.object({

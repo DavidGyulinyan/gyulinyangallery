@@ -9,6 +9,7 @@ CREATE TABLE artworks (
   price DECIMAL(10,2),
   url TEXT NOT NULL,
   materials TEXT,
+  sku TEXT UNIQUE NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

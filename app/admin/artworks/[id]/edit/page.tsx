@@ -55,6 +55,7 @@ export default function EditArtworkPage() {
       // Pre-fill form
       setValue("title", data.title);
       setValue("category", data.category);
+      setValue("sku", data.sku);
       setValue("year", data.year || undefined);
       setValue("dimensions", data.dimensions || "");
       setValue("price", data.price || undefined);
@@ -159,6 +160,18 @@ export default function EditArtworkPage() {
                   <p className="text-sm text-red-500">
                     {errors.category.message}
                   </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="sku">SKU *</Label>
+                <Input
+                  id="sku"
+                  {...register("sku")}
+                  placeholder="Unique SKU for the artwork"
+                />
+                {errors.sku && (
+                  <p className="text-sm text-red-500">{errors.sku.message}</p>
                 )}
               </div>
 

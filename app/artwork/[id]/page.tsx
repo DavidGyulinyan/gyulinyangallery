@@ -78,8 +78,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
                 </p>
               )}
               <p>
-                <span className="font-medium">SKU:</span>{" "}
-                {String(artwork.id).slice(0, 8).toUpperCase()}
+                <span className="font-medium">SKU:</span> {artwork.sku}
               </p>
             </div>
           </div>
