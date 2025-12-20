@@ -74,12 +74,7 @@ function ArtistBio() {
       <div className="container text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">About Gevorg Gyulinyan</h2>
         <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-          Gevorg Gyulinyan is a contemporary artist known for her innovative approach
-          to mixed media and abstract expressionism. With over 15 years of
-          experience, her work explores themes of identity, nature, and human
-          connection through vibrant colors and dynamic compositions. Her pieces
-          have been featured in galleries across Europe and North America.
-        </p>
+          Gevorg Gyulinyan is an architect and painter whose work explores color, form, and atmosphere. His paintings balance structure and freedom, abstraction and subtle references to the world around us, inviting viewers to engage with emotion, reflection, and imagination.</p>
         <Button asChild variant="outline">
           <Link href="/about">Read More</Link>
         </Button>

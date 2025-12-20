@@ -26,16 +26,10 @@ export default async function AboutPage() {
             About
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Gevorg Gyulinyan is a contemporary artist whose work explores the
-            intersection of human emotion and natural forms. With over 15 years
-            of experience in the art world, she has developed a unique style
-            that combines traditional techniques with modern sensibilities.
+            Gevorg Gyulinyan (born in 1967 in Yerevan, Armenia) began painting in early childhood. He graduated from the National University of Architecture and Construction of Armenia (NUACA). Trained as an architect, his professional practice has strongly influenced his artistic vision, shaping a refined sense of space, structure, and balance. While working in his profession, he continues to paint as a deeply personal and expressive pursuit.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Her journey began in the vibrant art scenes of Eastern Europe, where
-            she first experimented with mixed media and abstract expressionism.
-            Today, her work is recognized internationally and featured in
-            prestigious galleries and private collections.
+            His artistic journey began in the vibrant cultural environment of Armenia, where he first explored painting as a personal form of expression. Today, his work is presented primarily as a private practice, reflecting an ongoing dialogue between architectural discipline and artistic intuition.
           </p>
         </div>
       </div>
@@ -48,23 +42,13 @@ export default async function AboutPage() {
           </h2>
           <div className="prose prose-lg mx-auto text-muted-foreground">
             <p className="mb-6">
-              My work is a reflection of the human experience - the joy, the
-              struggle, the beauty in imperfection. I believe that art has the
-              power to connect us all, transcending language and culture to
-              touch something universal within us.
+              My work reflects the human experience—the joy, the struggle, and the beauty found in imperfection. I believe that art has the power to connect us, transcending language and culture to touch something universal within us.
             </p>
             <p className="mb-6">
-              Through my paintings, I seek to capture the essence of emotion in
-              its rawest form. Each brushstroke is a conversation, each color a
-              feeling. I draw inspiration from nature's patterns, urban
-              landscapes, and the complex tapestry of human relationships.
+              Through my paintings, I seek to capture emotion in its rawest form. Each brushstroke becomes a conversation, each color a feeling. I draw inspiration from nature’s patterns, urban landscapes, and the complex tapestry of human relationships.
             </p>
             <p>
-              My process is intuitive yet deliberate. I begin with a concept,
-              but allow the work to evolve organically. This approach results in
-              pieces that are both planned and spontaneous, structured yet free.
-              Each artwork tells its own story, inviting viewers to bring their
-              own experiences and interpretations.
+              My process is both intuitive and deliberate. I begin with a concept but allow the work to evolve organically. This approach creates pieces that are simultaneously planned and spontaneous, structured yet free. Each artwork tells its own story, inviting viewers to bring their own experiences and interpretations.
             </p>
           </div>
         </div>
