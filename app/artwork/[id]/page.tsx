@@ -110,20 +110,6 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
                 </DialogContent>
               </Dialog>
             )}
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="lg" className="flex-1">
-                  General Inquiry
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-125">
-                <DialogHeader>
-                  <DialogTitle>Contact Gallery</DialogTitle>
-                </DialogHeader>
-                <ContactForm />
-              </DialogContent>
-            </Dialog>
           </div>
         </div>
       </div>
