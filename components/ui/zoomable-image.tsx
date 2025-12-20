@@ -28,7 +28,9 @@ export function ZoomableImage({
       doubleClick={{ mode: "reset" }}
     >
       {({ zoomIn, zoomOut, resetTransform }) => (
-        <div className={`relative ${className}`}>
+        <div
+          className={`relative flex items-center justify-center min-h-full ${className}`}
+        >
           <div className="absolute top-2 right-2 z-10 flex gap-2">
             <button
               onClick={() => zoomIn()}
@@ -56,9 +58,9 @@ export function ZoomableImage({
             <Image
               src={src}
               alt={alt}
-              width={width}
-              height={height}
-              className="w-full h-auto cursor-grab active:cursor-grabbing"
+              width={width || undefined}
+              height={height || undefined}
+              className="max-w-full max-h-full cursor-grab active:cursor-grabbing"
               draggable={false}
             />
           </TransformComponent>

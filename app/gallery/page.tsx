@@ -68,7 +68,7 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
             </div>
           </DialogTrigger>
-          <DialogContent className="max-w-7xl max-h-[95vh] p-0">
+          <DialogContent className="w-[98vw] h-[98vh] p-0 bg-black/90">
             <DialogHeader className="sr-only">
               <DialogTitle>{artwork.title}</DialogTitle>
             </DialogHeader>

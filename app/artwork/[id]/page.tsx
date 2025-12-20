@@ -61,7 +61,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
                 </div>
               </div>
             </DialogTrigger>
-            <DialogContent className="max-w-7xl max-h-[95vh] p-0">
+            <DialogContent className="w-[98vw] h-[98vh] p-0 bg-black/90">
               <DialogHeader className="sr-only">
                 <DialogTitle>{artwork.title}</DialogTitle>
               </DialogHeader>
