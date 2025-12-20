@@ -79,23 +79,6 @@ function ArtworkCard({ artwork }: { artwork: Artwork }) {
                 height={800}
                 className="w-full h-auto"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-6">
-                <h3 className="text-white text-2xl font-bold mb-2">
-                  {artwork.title}
-                </h3>
-                <p className="text-white/80">
-                  {artwork.category} • {artwork.year}
-                </p>
-                {artwork.dimensions && (
-                  <p className="text-white/80">{artwork.dimensions}</p>
-                )}
-                {artwork.price && (
-                  <p className="text-white font-semibold">${artwork.price}</p>
-                )}
-                <Button asChild className="mt-4">
-                  <Link href={`/artwork/${artwork.id}`}>View Details</Link>
-                </Button>
-              </div>
             </div>
           </DialogContent>
         </Dialog>
