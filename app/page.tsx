@@ -30,7 +30,7 @@ async function getFeaturedArtworks() {
 
 function Hero() {
   return (
-    <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-artwork.jpg"
@@ -42,11 +42,11 @@ function Hero() {
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6 md:px-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
           Gyulinyan Gallery
         </h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+        <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
           Contemporary art gallery showcasing emerging and established artists
           through innovative exhibitions and curated collections.
         </p>
@@ -70,12 +70,18 @@ function Hero() {
 
 function ArtistBio() {
   return (
-    <section className="py-16">
-      <div className="container text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Gevorg Gyulinyan</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-          Gevorg Gyulinyan is an architect and painter whose work explores color, form, and atmosphere. His paintings balance structure and freedom, abstraction and subtle references to the world around us, inviting viewers to engage with emotion, reflection, and imagination.</p>
-        <Button asChild variant="outline">
+    <section className="py-8 md:py-16 px-4 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
+          About Gevorg Gyulinyan
+        </h2>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 md:mb-8 max-w-2xl mx-auto">
+          Gevorg Gyulinyan is an architect and painter whose work explores
+          color, form, and atmosphere. His paintings balance structure and
+          freedom, abstraction and subtle references to the world around us,
+          inviting viewers to engage with emotion, reflection, and imagination.
+        </p>
+        <Button asChild variant="outline" size="sm" className="md:size-default">
           <Link href="/about">Read More</Link>
         </Button>
       </div>
@@ -88,9 +94,9 @@ async function FeaturedCarousel() {
 
   if (artworks.length === 0) {
     return (
-      <section className="py-16">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <section className="py-8 md:py-16 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12">
             Featured Artwork
           </h2>
           <div className="text-center text-muted-foreground">
@@ -102,40 +108,42 @@ async function FeaturedCarousel() {
   }
 
   return (
-    <section className="py-16">
-      <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+    <section className="py-8 md:py-16 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12">
           Featured Artwork
         </h2>
         <Carousel className="w-full">
-          <CarouselContent>
+          <CarouselContent className="-ml-2 md:-ml-4">
             {artworks.map((artwork) => (
               <CarouselItem
                 key={artwork.id}
-                className="md:basis-1/2 lg:basis-1/3"
+                className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
-                <Card className="overflow-hidden">
+                <Card className="w-full overflow-hidden group hover:shadow-lg transition-shadow">
                   <CardContent className="p-0">
-                    <div className="relative aspect-square">
+                    <div className="relative aspect-4/5">
                       <Image
                         src={artwork.url}
                         alt={artwork.title}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-2">
+                    <div className="p-3 md:p-4">
+                      <h3 className="font-semibold text-base md:text-lg mb-1 md:mb-2">
                         {artwork.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-2">
+                      <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">
                         {artwork.category} • {artwork.year}
                       </p>
                       {artwork.price && (
-                        <p className="font-medium">${artwork.price}</p>
+                        <p className="font-medium text-sm md:text-base">
+                          ${artwork.price}
+                        </p>
                       )}
-                      <Button asChild className="w-full mt-4">
+                      <Button asChild className="w-full mt-2 md:mt-4" size="sm">
                         <Link href={`/artwork/${artwork.id}`}>
                           View Details
                         </Link>
@@ -146,8 +154,8 @@ async function FeaturedCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
         </Carousel>
       </div>
     </section>
@@ -156,7 +164,7 @@ async function FeaturedCarousel() {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <Hero />
       <ArtistBio />
       <Suspense

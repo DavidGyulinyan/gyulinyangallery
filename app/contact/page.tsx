@@ -47,14 +47,14 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div>
+          <div className="p-4">
             <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
             <ContactForm />
           </div>
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div>
+            <div className="p-4">
               <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
               <div className="space-y-4">
                 {contactInfo.map((item) => (
@@ -75,7 +75,7 @@ export default function ContactPage() {
             </div>
 
             {/* Social Links */}
-            <div>
+            <div className="p-4">
               <h2 className="text-2xl font-semibold mb-6">Follow us</h2>
               <div className="space-y-4">
                 {socialLinks.map((social) => (
@@ -95,7 +95,7 @@ export default function ContactPage() {
             </div>
 
             {/* Business Hours */}
-            <div>
+            <div className="p-4">
               <h2 className="text-2xl font-semibold mb-6">Gallery Hours</h2>
               <div className="space-y-2 text-muted-foreground">
                 <p>Monday - Friday: 10:00 AM - 6:00 PM</p>

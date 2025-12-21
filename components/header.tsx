@@ -7,6 +7,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { createClient } from "@/lib/supabase/client";
 
 const baseNavigation = [
@@ -88,6 +89,9 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="pr-0">
+            <DialogHeader className="sr-only">
+              <DialogTitle>Navigation Menu</DialogTitle>
+            </DialogHeader>
             <Link
               href="/"
               className="flex items-center"
